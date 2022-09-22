@@ -24,8 +24,9 @@ public class ButtonPanel extends JPanel implements View {
 
     @Override()
     public void initComponent() {
-        for (Integer v0 = 1; v0 <= NUMBER_OF_NUMBER_BUTTON; v0++)
-            numberButton[v0 % NUMBER_OF_NUMBER_BUTTON] = new JButton((String.valueOf(v0 % NUMBER_OF_NUMBER_BUTTON)));
+        for (Integer buttonIndex = 1; buttonIndex <= NUMBER_OF_NUMBER_BUTTON; buttonIndex++)
+            numberButton[buttonIndex % NUMBER_OF_NUMBER_BUTTON] = new JButton(
+                    (String.valueOf(buttonIndex % NUMBER_OF_NUMBER_BUTTON)));
         this.clearButton = new JButton("c");
         this.divButton = new JButton("/");
         this.mulButton = new JButton("x");
@@ -36,8 +37,8 @@ public class ButtonPanel extends JPanel implements View {
 
     @Override()
     public void render() {
-        for (Integer v0 = 1; v0 <= NUMBER_OF_NUMBER_BUTTON; v0++)
-            this.add(numberButton[v0 % NUMBER_OF_NUMBER_BUTTON]);
+        for (Integer buttonIndex = 1; buttonIndex <= NUMBER_OF_NUMBER_BUTTON; buttonIndex++)
+            this.add(numberButton[buttonIndex % NUMBER_OF_NUMBER_BUTTON]);
         this.add(this.clearButton);
         this.add(this.divButton);
         this.add(this.mulButton);

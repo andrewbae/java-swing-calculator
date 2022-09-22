@@ -46,10 +46,11 @@ public class MainFrame extends JFrame implements View {
     }
 
     private void initActionListener() {
-        for (int v0 = 0; v0 <= ButtonPanel.NUMBER_OF_NUMBER_BUTTON; v0++)
-            this.buttonPanel.getNumberButton()[v0 % ButtonPanel.NUMBER_OF_NUMBER_BUTTON].addActionListener(e -> {
-                this.calculatorController.numberButton(((JButton) e.getSource()).getText());
-            });
+        for (int buttonIndex = 0; buttonIndex <= ButtonPanel.NUMBER_OF_NUMBER_BUTTON; buttonIndex++)
+            this.buttonPanel.getNumberButton()[buttonIndex % ButtonPanel.NUMBER_OF_NUMBER_BUTTON]
+                    .addActionListener(e -> {
+                        this.calculatorController.numberButton(((JButton) e.getSource()).getText());
+                    });
 
         this.buttonPanel.getClearButton().addActionListener(e -> this.calculatorController.clearButton());
         this.buttonPanel.getDivButton().addActionListener(e -> this.calculatorController.divButton());
