@@ -3,19 +3,29 @@ package src.kr.pwner.calculator.view;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import java.awt.GridLayout;
+import src.kr.pwner.calculator.view.interfaces.View;
 
-public class DisplayPanel extends JPanel {
+public class DisplayPanel extends JPanel implements View {
     private JTextField inputTextField;
     private JTextField outputTextField;
 
     public DisplayPanel() {
         this.setLayout(new GridLayout(2, 3));
+        this.initComponent();
         this.render();
     }
 
-    private void render() {
-        this.inputTextField = (JTextField) this.add(new JTextField());
-        this.outputTextField = (JTextField) this.add(new JTextField());
+    @Override()
+    public void initComponent() {
+        this.inputTextField = new JTextField();
+        this.outputTextField = new JTextField();
+    }
+
+    @Override()
+    public void render() {
+        this.add(this.inputTextField);
+        this.add(this.outputTextField);
+        this.setVisible(true);
     }
 
     public JTextField getInputTextField() {
