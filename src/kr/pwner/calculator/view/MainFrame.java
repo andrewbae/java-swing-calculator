@@ -45,7 +45,6 @@ public class MainFrame extends JFrame implements View {
     private void initActionListener() {
         for (int buttonIndex = 0; buttonIndex <= ButtonPanel.NUMBER_OF_NUMBER_BUTTON; buttonIndex++)
             this.buttonPanel.getNumberButton()[buttonIndex % ButtonPanel.NUMBER_OF_NUMBER_BUTTON]
-                    //
                     .addActionListener(e -> {
                         this.calculatorController.numberButton(((JButton) e.getSource()).getText());
                     });

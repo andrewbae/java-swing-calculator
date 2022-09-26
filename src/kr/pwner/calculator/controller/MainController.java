@@ -47,7 +47,4 @@ public class MainController {
     public void numberButton(String number) {
         this.calculatorModel.appendToInput(number);
     }
-
-    public void numberButton(int buttonIndex) {
-    }
 }
