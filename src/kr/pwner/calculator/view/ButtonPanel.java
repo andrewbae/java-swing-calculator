@@ -6,6 +6,7 @@ import java.awt.GridLayout;
 import src.kr.pwner.calculator.view.interfaces.View;
 
 public class ButtonPanel extends JPanel implements View {
+    private static final ButtonPanel instance = new ButtonPanel();
     private JButton[] numberButton = new JButton[10];
     private JButton clearButton;
     private JButton divButton;
@@ -16,8 +17,13 @@ public class ButtonPanel extends JPanel implements View {
 
     public static final int NUMBER_OF_NUMBER_BUTTON = 10;
 
-    public ButtonPanel() {
+    public static ButtonPanel getInstance() {
+        return instance;
+    }
+
+    private ButtonPanel() {
         this.setLayout(new GridLayout(4, 3));
+
         this.initComponent();
         this.render();
     }

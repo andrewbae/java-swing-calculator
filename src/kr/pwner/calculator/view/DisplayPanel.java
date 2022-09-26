@@ -6,14 +6,20 @@ import java.awt.GridLayout;
 import src.kr.pwner.calculator.view.interfaces.View;
 
 public class DisplayPanel extends JPanel implements View {
+    private static final DisplayPanel instance = new DisplayPanel();
     private JTextField inputTextField;
     private JTextField outputTextField;
 
-    public DisplayPanel() {
+    public static DisplayPanel getInstance() {
+        return instance;
+    }
+
+    private DisplayPanel() {
         this.setLayout(new GridLayout(2, 3));
+
         this.initComponent();
         this.render();
-    }
+    };
 
     @Override()
     public void initComponent() {

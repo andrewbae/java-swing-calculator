@@ -8,13 +8,17 @@ import java.awt.GridLayout;
 import src.kr.pwner.calculator.view.interfaces.View;
 
 public class MainFrame extends JFrame implements View {
+    private static final MainFrame instance = new MainFrame();
     private MainModel mainModel;
     private MainController calculatorController;
     private DisplayPanel displayPanel;
     private ButtonPanel buttonPanel;
 
-    public MainFrame(String windowTitle) {
-        this.setTitle(windowTitle);
+    public static MainFrame getInstance() {
+        return instance;
+    }
+
+    private MainFrame() {
         this.setSize(300, 400);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setLayout(new GridLayout(2, 4));
@@ -28,26 +32,20 @@ public class MainFrame extends JFrame implements View {
 
     @Override()
     public void initComponent() {
-        this.displayPanel = new DisplayPanel();
-        this.buttonPanel = new ButtonPanel();
+        this.displayPanel = DisplayPanel.getInstance();
+        this.buttonPanel = ButtonPanel.getInstance();
 
         this.displayPanel.getInputTextField().setEditable(false);
         this.displayPanel.getOutputTextField().setEditable(false);
 
-        this.mainModel = new MainModel(this);
-        this.calculatorController = new MainController(mainModel);
-    }
-
-    @Override()
-    public void render() {
-        this.add(this.displayPanel);
-        this.add(this.buttonPanel);
-        this.setVisible(true);
+        this.mainModel = MainModel.getInstance().init(this);
+        this.calculatorController = MainController.getInstance().init(mainModel);
     }
 
     private void initActionListener() {
         for (int buttonIndex = 0; buttonIndex <= ButtonPanel.NUMBER_OF_NUMBER_BUTTON; buttonIndex++)
             this.buttonPanel.getNumberButton()[buttonIndex % ButtonPanel.NUMBER_OF_NUMBER_BUTTON]
+                    //
                     .addActionListener(e -> {
                         this.calculatorController.numberButton(((JButton) e.getSource()).getText());
                     });
@@ -58,6 +56,13 @@ public class MainFrame extends JFrame implements View {
         this.buttonPanel.getSubButton().addActionListener(e -> this.calculatorController.subButton());
         this.buttonPanel.getAddButton().addActionListener(e -> this.calculatorController.addButton());
         this.buttonPanel.getEqualButton().addActionListener(e -> this.calculatorController.equalButton());
+    }
+
+    @Override()
+    public void render() {
+        this.add(this.displayPanel);
+        this.add(this.buttonPanel);
+        this.setVisible(true);
     }
 
     public DisplayPanel getDisplayPanel() {

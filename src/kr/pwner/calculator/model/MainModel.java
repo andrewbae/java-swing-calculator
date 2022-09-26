@@ -1,17 +1,25 @@
 package src.kr.pwner.calculator.model;
 
-import javax.swing.JFrame;
 import javax.swing.JTextField;
 import org.mariuszgromada.math.mxparser.*;
 import src.kr.pwner.calculator.view.MainFrame;
 
 public class MainModel {
+    private static final MainModel instance = new MainModel();
     JTextField inputTextField;
     JTextField outputTextField;
 
-    public MainModel(MainFrame frame) {
-        this.inputTextField = frame.getDisplayPanel().getInputTextField();
-        this.outputTextField = frame.getDisplayPanel().getOutputTextField();
+    public static MainModel getInstance() {
+        return instance;
+    }
+
+    private MainModel() {
+    };
+
+    public MainModel init(MainFrame mainFrame) {
+        this.inputTextField = mainFrame.getDisplayPanel().getInputTextField();
+        this.outputTextField = mainFrame.getDisplayPanel().getOutputTextField();
+        return instance;
     }
 
     public void flushInputOutput() {
