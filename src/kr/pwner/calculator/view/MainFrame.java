@@ -43,7 +43,7 @@ public class MainFrame extends JFrame implements View {
     }
 
     private void initActionListener() {
-        for (int buttonIndex = 0; buttonIndex <= ButtonPanel.NUMBER_OF_NUMBER_BUTTON; buttonIndex++)
+        for (int buttonIndex = 1; buttonIndex <= ButtonPanel.NUMBER_OF_NUMBER_BUTTON; buttonIndex++)
             this.buttonPanel.getNumberButton()[buttonIndex % ButtonPanel.NUMBER_OF_NUMBER_BUTTON]
                     .addActionListener(event -> { // get button text which event occured
                         this.calculatorController.numberButton(((JButton) event.getSource()).getText());
