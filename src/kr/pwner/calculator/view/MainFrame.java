@@ -5,7 +5,7 @@ import javax.swing.JFrame;
 import src.kr.pwner.calculator.controller.MainController;
 import src.kr.pwner.calculator.model.MainModel;
 import java.awt.GridLayout;
-import src.kr.pwner.calculator.view.interfaces.View;
+import src.kr.pwner.calculator.interfaces.View;
 
 public class MainFrame extends JFrame implements View {
     private static final MainFrame instance = new MainFrame();

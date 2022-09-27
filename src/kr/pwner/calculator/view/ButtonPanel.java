@@ -3,7 +3,7 @@ package src.kr.pwner.calculator.view;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import java.awt.GridLayout;
-import src.kr.pwner.calculator.view.interfaces.View;
+import src.kr.pwner.calculator.interfaces.View;
 
 public class ButtonPanel extends JPanel implements View {
     private static final ButtonPanel instance = new ButtonPanel();

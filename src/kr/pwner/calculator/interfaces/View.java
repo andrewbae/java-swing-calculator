@@ -1,4 +1,4 @@
-package src.kr.pwner.calculator.view.interfaces;
+package src.kr.pwner.calculator.interfaces;
 
 public interface View {
     public void initComponent();
