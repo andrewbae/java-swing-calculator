@@ -26,7 +26,6 @@ public class MainFrame extends JFrame implements View {
         this.setResizable(false);
 
         this.initComponent();
-        this.initActionListener();
         this.render();
     }
 
@@ -40,9 +39,7 @@ public class MainFrame extends JFrame implements View {
 
         this.mainModel = MainModel.getInstance().init(this);
         this.calculatorController = MainController.getInstance().init(mainModel);
-    }
 
-    private void initActionListener() {
         for (int buttonIndex = 1; buttonIndex <= ButtonPanel.NUMBER_OF_NUMBER_BUTTON; buttonIndex++)
             this.buttonPanel.getNumberButton()[buttonIndex % ButtonPanel.NUMBER_OF_NUMBER_BUTTON]
                     .addActionListener(event -> { // get button text which event occured
