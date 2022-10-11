@@ -3,9 +3,8 @@ package src.kr.pwner.calculator.view;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import java.awt.GridLayout;
-import src.kr.pwner.calculator.interfaces.View;
 
-public class ButtonPanel extends JPanel implements View {
+public class ButtonPanel extends JPanel {
     private static final ButtonPanel instance = new ButtonPanel();
     private JButton[] numberButton = new JButton[10];
     private JButton clearButton;
@@ -24,33 +23,17 @@ public class ButtonPanel extends JPanel implements View {
     private ButtonPanel() {
         this.setLayout(new GridLayout(4, 3));
 
-        this.initComponent();
-        this.render();
-    }
-
-    @Override()
-    public void initComponent() {
-        for (Integer buttonIndex = 1; buttonIndex <= NUMBER_OF_NUMBER_BUTTON; buttonIndex++)
+        for (Integer buttonIndex = 1; buttonIndex <= NUMBER_OF_NUMBER_BUTTON; buttonIndex++) {
             numberButton[buttonIndex % NUMBER_OF_NUMBER_BUTTON] = new JButton(
                     (String.valueOf(buttonIndex % NUMBER_OF_NUMBER_BUTTON)));
-        this.clearButton = new JButton("c");
-        this.divButton = new JButton("/");
-        this.mulButton = new JButton("x");
-        this.subButton = new JButton("-");
-        this.addButton = new JButton("+");
-        this.equalButton = new JButton("=");
-    }
-
-    @Override()
-    public void render() {
-        for (Integer buttonIndex = 1; buttonIndex <= NUMBER_OF_NUMBER_BUTTON; buttonIndex++)
             this.add(numberButton[buttonIndex % NUMBER_OF_NUMBER_BUTTON]);
-        this.add(this.clearButton);
-        this.add(this.divButton);
-        this.add(this.mulButton);
-        this.add(this.subButton);
-        this.add(this.addButton);
-        this.add(this.equalButton);
+        }
+        this.clearButton = (JButton) this.add(new JButton("c"));
+        this.divButton = (JButton) this.add(new JButton("/"));
+        this.mulButton = (JButton) this.add(new JButton("x"));
+        this.subButton = (JButton) this.add(new JButton("-"));
+        this.addButton = (JButton) this.add(new JButton("+"));
+        this.equalButton = (JButton) this.add(new JButton("="));
 
         this.setVisible(true);
     }
